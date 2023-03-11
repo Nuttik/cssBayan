@@ -1,0 +1,187 @@
+/* color*/
+:root {
+  --main-color: #FFDA21;
+  --hover-color: #F2B705;
+}
+/* reset style */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	margin:0;
+	padding:0;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* end reset style */
+body {
+	background: #f9f9f9;	
+	font-family: "Trebuchet MS", Helvetica, sans-serif;	
+	font-size: 14px;
+}
+.logo{
+	width: clamp(5rem, 6rem + 2.5vw, 8rem);
+	margin:36px auto;
+	display: block;
+}
+/* start accordion */
+.accordion{
+	max-width: 640px;
+	width: calc(100% - 32px);
+	margin: 10px auto 30px auto;
+	text-align: left;
+}
+.accordion label{
+	display: flex;
+    align-items: center;
+    justify-content: space-between;	
+	height: max-content;
+	padding: 0.5em 1em;	
+	z-index: 20;
+	cursor: pointer;
+	background: var(--main-color);
+	border-bottom: solid 1px #f9f9f9;
+	color: #1a1a1a;
+	line-height: 1.5em;
+	transition: all 0.5s ease-in-out;
+}
+.accordion ul li:first-child input + label{
+	border-radius:8px 8px 0 0;
+}
+.accordion ul li:last-child input + label{
+	border-radius:0 0 8px 8px;
+}
+.accordion ul li:last-child input:checked + label{
+	border-radius:0;
+}
+.accordion input:checked + label{
+	background: #757575;
+	color: #f9f9f9;
+}
+.accordion input{
+	display: none;
+}
+.accordion .item-body{
+	display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	background: rgba(255, 255, 255, 0.5);
+	overflow: hidden;
+	height: 0px;
+	position: relative;
+	z-index: 10;
+	-webkit-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+	-moz-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+	-o-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+	-ms-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+	transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+}
+.accordion input ~ .item-body img{
+	width: 300px;
+	display:block;
+	cursor: pointer;
+	filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    transition: filter 1s cubic-bezier(0.9, 0.04, 1, 1) 0s,	transform 0.6s;
+}
+.accordion input:checked ~ .item-body img{
+	filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+}
+.accordion input:checked ~ .item-body{
+	-webkit-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+	-moz-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+	-o-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+	-ms-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+	transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+	border: solid 1px rgba(155,155,155,0.3);
+}
+.accordion input:checked ~ .item-body{
+	height: 300px;
+}
+.accordion label:after{
+		content: '';
+}
+@media screen  and (min-width: 819px) /* Tablet */ {
+  body{
+  	font-size: 16px;
+  }
+  .accordion input:checked ~ .item-body{
+	height: 480px;
+	}
+	.accordion input ~ .item-body img{
+	width: 100%;
+    max-width: 440px;
+	}
+}
+@media screen and (min-width: 980px) /* Desktop */ {
+  body{
+  	font-size: 18px;
+  }  
+   .accordion input:checked + label:after{
+      transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+    }
+}
+@media screen and (hover: hover){
+  .accordion label:hover{ 
+    background: var(--hover-color);
+  }
+  .accordion input:checked + label:hover{
+     background: #757575;
+      color: #f9f9f9;
+   }	
+   .accordion label:hover:after{
+      content: '+';
+      font-size: 1.5em;
+      margin-left: 1.5em;
+      font-weight: 300;
+      text-align: center;
+      line-height: inherit;
+      transition: all ease 0.2s;
+    }
+	.accordion input:checked ~ .item-body img:hover{
+      transform: scale(1.05);
+    }
+}
+.accordion input:checked ~ .item-body img:active{
+      transform: scale(1.1);
+}
