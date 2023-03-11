@@ -163,31 +163,28 @@ body {
   body{
   	font-size: 18px;
   }
-}
-
-@media (hover: hover){ 
-	.accordion label:hover{ 
-		background: var(--hover-color);
-	}
-	.accordion input:checked + label:hover{
-		background: #757575;
-		color: #f9f9f9;
-	}	
-	.accordion label:hover:after{
-		content: '+';
-		font-size: 1.5em;
-		margin-left: 1.5em;
-		font-weight: 300;
-		text-align: center;
-		line-height: inherit;
-		transition: all ease 0.2s;
-	}
-	.accordion input:checked + label:after{
-		transform: rotate(-135deg);
-		-ms-transform: rotate(-135deg);
-		-webkit-transform: rotate(-135deg);
-	}
-	.accordion input:checked ~ .item-body img:hover,.accordion input:checked ~ .item-body img:active{
-		transform: scale(1.1);
-	}
+  .accordion label:hover{ 
+    background: var(--hover-color);
+  }
+  .accordion input:checked + label:hover{
+     background: #757575;
+      color: #f9f9f9;
+   }	
+   .accordion label:hover:after{
+      content: '+';
+      font-size: 1.5em;
+      margin-left: 1.5em;
+      font-weight: 300;
+      text-align: center;
+      line-height: inherit;
+      transition: all ease 0.2s;
+    }
+   .accordion input:checked + label:after{
+      transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+    }
+    .accordion input:checked ~ .item-body img:hover,.accordion input:checked ~ .item-body img:active{
+      transform: scale(1.1);
+    }
 }
