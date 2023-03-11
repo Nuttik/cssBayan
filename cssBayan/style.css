@@ -2,8 +2,6 @@
 :root {
   --main-color: #FFDA21;
   --hover-color: #F2B705;
-  --active-color: brown;
-  --text-color: brown;
 }
 /* reset style */
 html, body, div, span, applet, object, iframe,
@@ -74,8 +72,7 @@ body {
     align-items: center;
     justify-content: space-between;	
 	height: max-content;
-	padding: 0.5em 1em;		
-	position: relative;
+	padding: 0.5em 1em;	
 	z-index: 20;
 	cursor: pointer;
 	background: var(--main-color);
@@ -119,6 +116,7 @@ body {
 .accordion input ~ .item-body img{
 	width: 300px;
 	display:block;
+	cursor: pointer;
 	filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
     transition: filter 1s cubic-bezier(0.9, 0.04, 1, 1) 0s,	transform 0.6s;
@@ -141,12 +139,6 @@ body {
 .accordion label:after{
 		content: '';
 }
-/* media requests*/
-
-
-@media screen and (max-width: 819px) /* Mobile */ {
-	
-}
 @media screen  and (min-width: 819px) /* Tablet */ {
   body{
   	font-size: 16px;
@@ -162,7 +154,14 @@ body {
 @media screen and (min-width: 980px) /* Desktop */ {
   body{
   	font-size: 18px;
-  }
+  }  
+   .accordion input:checked + label:after{
+      transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+    }
+}
+@media screen and (hover: hover){
   .accordion label:hover{ 
     background: var(--hover-color);
   }
@@ -179,12 +178,10 @@ body {
       line-height: inherit;
       transition: all ease 0.2s;
     }
-   .accordion input:checked + label:after{
-      transform: rotate(-135deg);
-      -ms-transform: rotate(-135deg);
-      -webkit-transform: rotate(-135deg);
+	.accordion input:checked ~ .item-body img:hover{
+      transform: scale(1.05);
     }
-    .accordion input:checked ~ .item-body img:hover,.accordion input:checked ~ .item-body img:active{
+}
+.accordion input:checked ~ .item-body img:active{
       transform: scale(1.1);
-    }
 }
